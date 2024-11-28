@@ -1,9 +1,9 @@
-FROM python:3.9-slim AS builder
+FROM python:3.6-slim AS builder
 ADD . /app
 WORKDIR /app
 
 # We are installing a dependency here directly into our app source dir
-RUN pip install --target=/app exifread feedgen==0.9.0
+RUN pip install --target=/app exifread feedgen
 
 # A distroless container image with Python and some basics like SSL certificates
 # https://github.com/GoogleContainerTools/distroless
