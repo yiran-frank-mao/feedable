@@ -1,4 +1,3 @@
-from tkinter import Image
 import os
 import exifread
 from feedgen.feed import FeedGenerator
