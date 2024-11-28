@@ -1,10 +1,26 @@
-name: "Python Container Action Template"
+name: "Feedable"
 description: "Get started with Python Container actions"
 author: "Jacob Tomlinson"
 inputs:
-  myInput:
+  folderPath:
     description: "Input to use"
-    default: "world"
+    default: "/images"
+  outputPath:
+    description: "Output path"
+    default: "/_layouts"
+  title:
+    description: "Title of the feed"
+    default: "My Feed"
+  description:
+    description: "Description of the feed"
+    default: "My feed description"
+  baseUrl:
+    description: "Base URL of the site"
+    default: "https://example.com"
+  directLink:
+    description: "Base direct links to the images"
+    default: "https://example.com"
+
 outputs:
   myOutput:
     description: "Output from the action"
