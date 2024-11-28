@@ -38,7 +38,7 @@ def main():
 
     fg.rss_file(output_path)
 
-    set_github_action_output('Generated: ', output_path)
+    set_github_action_output('output', output_path)
 
 
 if __name__ == "__main__":
