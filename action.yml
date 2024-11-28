@@ -7,7 +7,7 @@ inputs:
     default: "/images"
   outputPath:
     description: "Output path"
-    default: "/_layouts"
+    default: "/_layouts/feed.xml"
   title:
     description: "Title of the feed"
     default: "My Feed"
