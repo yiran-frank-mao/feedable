@@ -43,7 +43,7 @@ def main():
         entry = ET.SubElement(feed, "entry")
         entry_title = ET.SubElement(entry, "title")
         entry_title.text = "Beautiful Sunset"
-        entry_link = ET.SubElement(entry, "link", href=os.path.join(os.environ["INPUT_DIRECTLINK"]+folder_path, image_info['file_name']), rel="enclosure", type="image/jpeg")
+        entry_link = ET.SubElement(entry, "link", href=os.path.join(os.environ["INPUT_DIRECTLINK"], os.environ["INPUT_FOLDERPATH"], image_info['file_name']), rel="enclosure", type="image/jpeg")
         entry_id = ET.SubElement(entry, "id")
         entry_id.text = image_info['file_name']
         entry_updated = ET.SubElement(entry, "updated")
