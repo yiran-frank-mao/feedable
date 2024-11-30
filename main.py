@@ -16,7 +16,8 @@ def set_github_action_output(output_name, output_value):
     f.close()
 
 def main():
-    folder_path = os.path.join(os.getenv('GITHUB_WORKSPACE', '.'), os.environ["INPUT_FOLDERPATH"])
+    print(os.environ['GITHUB_WORKSPACE'])
+    folder_path = os.path.join(os.environ['GITHUB_WORKSPACE'], os.environ["INPUT_FOLDERPATH"])
     output_path = os.environ["INPUT_OUTPUTPATH"]
 
     metadata_list = []
