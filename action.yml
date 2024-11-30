@@ -4,7 +4,7 @@ author: "Jacob Tomlinson"
 inputs:
   folderPath:
     description: "Input to use e.g. /images"
-    default: "/images"
+    default: "images"
   outputPath:
     description: "Output path e.g. /_layouts/feed.xml"
     default: "/_layouts/feed.xml"
