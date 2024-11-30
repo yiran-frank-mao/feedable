@@ -33,4 +33,4 @@
 
 import os
 
-print(os.path.join('/home/maoyiran/Desktop/feedable', 'image'))
+print(os.path.join('home/maoyiran/Desktop/feedable', 'image'))
