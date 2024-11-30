@@ -26,15 +26,7 @@ def main():
             image_info['file_name'] = file
             metadata_list.append(image_info)
 
-    fg = FeedGenerator()
-    fg.title(os.environ["INPUT_TITLE"])
-    fg.link(href=os.environ["INPUT_BASEURL"], rel='self')
-    fg.description(os.environ["INPUT_DESCRIPTION"])
-
-    import xml.etree.ElementTree as ET
-
     feed = ET.Element("feed", xmlns="http://www.w3.org/2005/Atom")
-
     title = ET.SubElement(feed, "title")
     title.text = os.environ["INPUT_TITLE"]
     link = ET.SubElement(feed, "link", href=os.environ["INPUT_BASEURL"])
@@ -44,20 +36,24 @@ def main():
     name = ET.SubElement(author, "name")
     name.text = os.environ["INPUT_AUTHOR"]
 
-    # Add an entry for each image
+    # Add an e
+
+    # Create XML
+    tree = ET.ElementTree(feed)
+    tree.write("image_atom_feed.xml", encoding="utf-8", xml_declaration=True)
+
     for image_info in metadata_list:
         entry = ET.SubElement(feed, "entry")
         entry_title = ET.SubElement(entry, "title")
         entry_title.text = "Beautiful Sunset"
-        entry_link = ET.SubElement(entry, "link", href="http://example.com/sunset.jpg", rel="enclosure", type="image/jpeg")
+        entry_link = ET.SubElement(entry, "link", href=os.path.join(os.environ["INPUT_DIRECTLINK"]+folder_path, image_info['file_name']), rel="enclosure", type="image/jpeg")
         entry_id = ET.SubElement(entry, "id")
-        entry_id.text = "http://example.com/sunset.jpg"
+        entry_id.text = image_info['file_name']
         entry_updated = ET.SubElement(entry, "updated")
         entry_updated.text = "2024-11-30T12:00:00Z"
         entry_summary = ET.SubElement(entry, "summary")
         entry_summary.text = "A stunning sunset over the ocean."
 
-    # Create XML
     tree = ET.ElementTree(feed)
     tree.write(output_path, encoding="utf-8", xml_declaration=True)
 

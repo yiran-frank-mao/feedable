@@ -1,0 +1,2 @@
+<?xml version='1.0' encoding='utf-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>My Image Feed</title><link href="http://example.com" /><updated>2024-11-30T12:00:00Z</updated><author><name>Yiran</name></author><entry><title>Beautiful Sunset</title><link href="http://example.com/sunset.jpg" rel="enclosure" type="image/jpeg" /><id>http://example.com/sunset.jpg</id><updated>2024-11-30T12:00:00Z</updated><summary>A stunning sunset over the ocean.</summary></entry></feed>
