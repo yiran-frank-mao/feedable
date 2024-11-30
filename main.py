@@ -1,6 +1,7 @@
 import os
 import exifread
-from feedgen.feed import FeedGenerator
+from datetime import datetime
+import xml.etree.ElementTree as ET
 
 def get_image_metadata(file_path):
     img = open(file_path, 'rb')
@@ -30,13 +31,35 @@ def main():
     fg.link(href=os.environ["INPUT_BASEURL"], rel='self')
     fg.description(os.environ["INPUT_DESCRIPTION"])
 
-    for image_info in metadata_list:
-        fe = fg.add_entry()
-        fe.title(image_info.get('ImageDescription', 'No Title'))
-        fe.link(href=os.path.join(os.environ["INPUT_DIRECTLINK"]+folder_path, image_info['file_name']))
-        # fe.description(str(image_info))
+    import xml.etree.ElementTree as ET
 
-    fg.rss_file(output_path)
+    feed = ET.Element("feed", xmlns="http://www.w3.org/2005/Atom")
+
+    title = ET.SubElement(feed, "title")
+    title.text = os.environ["INPUT_TITLE"]
+    link = ET.SubElement(feed, "link", href=os.environ["INPUT_BASEURL"])
+    updated = ET.SubElement(feed, "updated")
+    updated.text = datetime.utcnow().isoformat() + "Z"  # current time in ISO 8601 format
+    author = ET.SubElement(feed, "author")
+    name = ET.SubElement(author, "name")
+    name.text = os.environ["INPUT_AUTHOR"]
+
+    # Add an entry for each image
+    for image_info in metadata_list:
+        entry = ET.SubElement(feed, "entry")
+        entry_title = ET.SubElement(entry, "title")
+        entry_title.text = "Beautiful Sunset"
+        entry_link = ET.SubElement(entry, "link", href="http://example.com/sunset.jpg", rel="enclosure", type="image/jpeg")
+        entry_id = ET.SubElement(entry, "id")
+        entry_id.text = "http://example.com/sunset.jpg"
+        entry_updated = ET.SubElement(entry, "updated")
+        entry_updated.text = "2024-11-30T12:00:00Z"
+        entry_summary = ET.SubElement(entry, "summary")
+        entry_summary.text = "A stunning sunset over the ocean."
+
+    # Create XML
+    tree = ET.ElementTree(feed)
+    tree.write(output_path, encoding="utf-8", xml_declaration=True)
 
     set_github_action_output('output', output_path)
 

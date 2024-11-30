@@ -3,10 +3,10 @@ description: "Get started with Python Container actions"
 author: "Jacob Tomlinson"
 inputs:
   folderPath:
-    description: "Input to use"
+    description: "Input to use e.g. /images"
     default: "/images"
   outputPath:
-    description: "Output path"
+    description: "Output path e.g. /_layouts/feed.xml"
     default: "/_layouts/feed.xml"
   title:
     description: "Title of the feed"
@@ -17,6 +17,9 @@ inputs:
   baseUrl:
     description: "Base URL of the site"
     default: "https://example.com"
+  authhor:
+    description: "Author of the feed"
+    default: "Author"
   directLink:
     description: "Base direct links to the images"
     default: "https://example.com"
