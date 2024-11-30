@@ -20,6 +20,7 @@ def main():
     folder_path = os.path.join(os.environ['GITHUB_WORKSPACE'], os.environ["INPUT_FOLDERPATH"])
     output_path = os.path.join(os.environ['GITHUB_WORKSPACE'], os.environ["INPUT_OUTPUTPATH"])
 
+    # Get metadata for each image in the folder
     metadata_list = []
     for file in os.listdir(folder_path):
         if file.endswith('.jpg') or file.endswith('.jpeg') or file.endswith('.png'):
@@ -27,6 +28,7 @@ def main():
             image_info['file_name'] = file
             metadata_list.append(image_info)
 
+    # Initialize the XML feed
     feed = ET.Element("feed", xmlns="http://www.w3.org/2005/Atom")
     title = ET.SubElement(feed, "title")
     title.text = os.environ["INPUT_TITLE"]
@@ -50,6 +52,7 @@ def main():
         entry_summary = ET.SubElement(entry, "summary")
         entry_summary.text = "A stunning sunset over the ocean."
 
+    # Generate XML
     tree = ET.ElementTree(feed)
     tree.write(output_path, encoding="utf-8", xml_declaration=True)
 
