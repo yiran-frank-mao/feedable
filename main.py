@@ -2,6 +2,7 @@ import os
 import exifread
 from datetime import datetime
 import xml.etree.ElementTree as ET
+from xml.dom import minidom
 
 def get_image_metadata(file_path):
     img = open(file_path, 'rb')
@@ -52,8 +53,13 @@ def main():
         entry_summary.text = "A stunning sunset over the ocean."
 
     # Generate XML
-    tree = ET.ElementTree(feed)
-    tree.write(output_path, encoding="utf-8", xml_declaration=True)
+    # tree = ET.ElementTree(feed)
+    # tree.write(output_path, encoding="utf-8", xml_declaration=True)
+    xml_str = ET.tostring(feed, encoding='utf-8')
+    formatted_xml = minidom.parseString(xml_str).toprettyxml(indent="  ")
+
+    with open(output_path, "w", encoding="utf-8") as f:
+        f.write(formatted_xml)
 
     set_github_action_output('myOutput', os.environ["INPUT_OUTPUTPATH"])
 
