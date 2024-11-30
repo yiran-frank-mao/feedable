@@ -17,7 +17,7 @@ inputs:
   baseUrl:
     description: "Base URL of the site"
     default: "https://example.com"
-  authhor:
+  author:
     description: "Author of the feed"
     default: "Author"
   directLink:
