@@ -37,12 +37,11 @@ def main():
     name = ET.SubElement(author, "name")
     name.text = os.environ["INPUT_AUTHOR"]
 
-    # Add an e
-
     # Create XML
     tree = ET.ElementTree(feed)
     tree.write("image_atom_feed.xml", encoding="utf-8", xml_declaration=True)
 
+    # Add an entry for each image
     for image_info in metadata_list:
         entry = ET.SubElement(feed, "entry")
         entry_title = ET.SubElement(entry, "title")
@@ -58,7 +57,7 @@ def main():
     tree = ET.ElementTree(feed)
     tree.write(output_path, encoding="utf-8", xml_declaration=True)
 
-    set_github_action_output('output', output_path)
+    set_github_action_output('myOutput', output_path)
 
 
 if __name__ == "__main__":
