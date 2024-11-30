@@ -13,4 +13,4 @@ jobs:
 
       - name: Check outputs
         run: |
-          test "${{ steps.selftest.outputs.output }}" == "/_layouts/feed.xml"
+          test "${{ steps.selftest.outputs.myOutput }}" == "feed.xml"
