@@ -37,10 +37,6 @@ def main():
     name = ET.SubElement(author, "name")
     name.text = os.environ["INPUT_AUTHOR"]
 
-    # Create XML
-    tree = ET.ElementTree(feed)
-    tree.write("image_atom_feed.xml", encoding="utf-8", xml_declaration=True)
-
     # Add an entry for each image
     for image_info in metadata_list:
         entry = ET.SubElement(feed, "entry")
