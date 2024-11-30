@@ -56,7 +56,7 @@ def main():
     tree = ET.ElementTree(feed)
     tree.write(output_path, encoding="utf-8", xml_declaration=True)
 
-    set_github_action_output('myOutput', output_path)
+    set_github_action_output('myOutput', os.environ["INPUT_OUTPUTPATH"])
 
 
 if __name__ == "__main__":
