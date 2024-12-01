@@ -51,10 +51,10 @@ def main():
             "src": os.path.join(os.environ["INPUT_DIRECTLINK"], os.environ["INPUT_FOLDERPATH"], image_info['file_name']),
             "referrerpolicy": "no-referrer"
         })
-        figure_xml = ET.tostring(figure, encoding='unicode')
 
         entry_description = ET.SubElement(entry, "description")
-        entry_description.text = figure_xml
+        entry_description.text = ET.tostring(figure, encoding='unicode')
+
         entry_link = ET.SubElement(entry, "link", href=os.path.join(os.environ["INPUT_DIRECTLINK"], os.environ["INPUT_FOLDERPATH"], image_info['file_name']), rel="enclosure", type="image/jpeg")
         entry_id = ET.SubElement(entry, "id")
         entry_id.text = image_info['file_name']
