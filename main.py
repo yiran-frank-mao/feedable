@@ -46,7 +46,7 @@ def main():
         entry_title.text = "Beautiful Sunset"
 
         entry_description = ET.SubElement(entry, "description")
-        figure = ET.SubElement(entry, "description")
+        figure = ET.SubElement(entry_description, "figure")
         ET.SubElement(figure, "img", {
             "alt": image_info["file_name"],
             "src": os.path.join(os.environ["INPUT_DIRECTLINK"], os.environ["INPUT_FOLDERPATH"], image_info['file_name']),
