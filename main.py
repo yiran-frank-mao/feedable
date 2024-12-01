@@ -53,9 +53,8 @@ def main():
             "referrerpolicy": "no-referrer"
         })
 
-        entry_link = ET.SubElement(entry, "link", href=os.path.join(os.environ["INPUT_DIRECTLINK"], os.environ["INPUT_FOLDERPATH"], image_info['file_name']), rel="enclosure", type="image/jpeg")
-        entry_id = ET.SubElement(entry, "id")
-        entry_id.text = image_info['file_name']
+        entry_link = ET.SubElement(entry, "link", href=os.path.join(os.environ["INPUT_DIRECTLINK"], os.environ["INPUT_FOLDERPATH"], image_info['file_name']))
+        entry_enclosure = ET.SubElement(entry, "enclosure", url=os.path.join(os.environ["INPUT_DIRECTLINK"], os.environ["INPUT_FOLDERPATH"], image_info['file_name']), type="image/jpg")
         entry_updated = ET.SubElement(entry, "updated")
         entry_updated.text = "2024-11-30T12:00:00Z"
         entry_summary = ET.SubElement(entry, "summary")
