@@ -2,13 +2,13 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>My Feed</title>
   <link href="https://example.com"/>
-  <updated>2024-11-30T23:34:21.143573Z</updated>
+  <updated>2024-11-30T23:37:37.026684Z</updated>
   <author>
     <name>Author</name>
   </author>
   <entry>
     <title>Beautiful Sunset</title>
-    <link href="https://example.com/images/image.jpg" rel="enclosure" type="image/jpeg"/>
+    <link href="https://raw.githubusercontent.com/yiran-frank-mao/feedable/master/images/image.jpg" rel="enclosure" type="image/jpeg"/>
     <id>image.jpg</id>
     <updated>2024-11-30T12:00:00Z</updated>
     <summary>A stunning sunset over the ocean.</summary>
