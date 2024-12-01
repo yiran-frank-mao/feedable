@@ -7,7 +7,7 @@ from xml.dom import minidom
 def get_image_metadata(file_path):
     img = open(file_path, 'rb')
     tags = exifread.process_file(img, details=False)
-    return {key: tags[key] for key in ['EXIF LensModel', 'EXIF FocalLength', 'EXIF ApertureValue', 'EXIF ShutterSpeedValue'] if key in tags}
+    return {key: tags[key] for key in ['Image Make', 'Image Model', 'EXIF LensModel', 'EXIF FocalLength', 'EXIF ApertureValue', 'EXIF ShutterSpeedValue'] if key in tags}
 
 # Set the output value by writing to the outputs in the Environment File, mimicking the behavior defined here:
 #  https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-output-parameter
@@ -47,7 +47,7 @@ def main():
 
         figure = ET.Element("figure")
         ET.SubElement(figure, "img", {
-            "alt": image_info["title"],
+            "alt": image_info["file_name"],
             "src": os.path.join(os.environ["INPUT_DIRECTLINK"], os.environ["INPUT_FOLDERPATH"], image_info['file_name']),
             "referrerpolicy": "no-referrer"
         })
