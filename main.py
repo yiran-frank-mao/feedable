@@ -45,15 +45,13 @@ def main():
         entry_title = ET.SubElement(entry, "title")
         entry_title.text = "Beautiful Sunset"
 
-        figure = ET.Element("figure")
+        entry_description = ET.SubElement(entry, "description")
+        figure = ET.SubElement(entry, "description")
         ET.SubElement(figure, "img", {
             "alt": image_info["file_name"],
             "src": os.path.join(os.environ["INPUT_DIRECTLINK"], os.environ["INPUT_FOLDERPATH"], image_info['file_name']),
             "referrerpolicy": "no-referrer"
         })
-
-        entry_description = ET.SubElement(entry, "description")
-        entry_description.text = ET.tostring(figure, encoding='unicode')
 
         entry_link = ET.SubElement(entry, "link", href=os.path.join(os.environ["INPUT_DIRECTLINK"], os.environ["INPUT_FOLDERPATH"], image_info['file_name']), rel="enclosure", type="image/jpeg")
         entry_id = ET.SubElement(entry, "id")
