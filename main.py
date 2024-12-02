@@ -41,7 +41,7 @@ def main():
 
     # Add an entry for each image
     for image_info in metadata_list:
-        entry = ET.SubElement(feed, "entry")
+        entry = ET.SubElement(feed, "item")
         entry_title = ET.SubElement(entry, "title")
         entry_title.text = "Beautiful Sunset"
 
