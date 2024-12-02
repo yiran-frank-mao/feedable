@@ -9,9 +9,7 @@
   <item>
     <title>Beautiful Sunset</title>
     <description>
-      <figure>
-        <img alt="image.jpg" referrerpolicy="no-referrer" src="https://raw.githubusercontent.com/yiran-frank-mao/feedable/master/images/image.jpg"/>
-      </figure>
+      <figure><img alt="image.jpg" referrerpolicy="no-referrer" src="https://raw.githubusercontent.com/yiran-frank-mao/feedable/master/images/image.jpg"/></figure> Veil of Harbour by Tomoaki Katsuba.
     </description>
     <link href="https://raw.githubusercontent.com/yiran-frank-mao/feedable/master/images/image.jpg"/>
     <enclosure type="image/jpg" url="https://raw.githubusercontent.com/yiran-frank-mao/feedable/master/images/image.jpg"/>
