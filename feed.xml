@@ -1,22 +1,23 @@
-<?xml version="1.0" ?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-  <title>My Feed</title>
-  <link href="https://example.com"/>
-  <updated>2024-12-02T06:47:38.146768Z</updated>
-  <author>
-    <name>Author</name>
-  </author>
-  <item>
-    <title>Beautiful Sunset</title>
-    <description>
-      <figure>
-        <img alt="image.jpg" referrerpolicy="no-referrer" src="https://raw.githubusercontent.com/yiran-frank-mao/feedable/master/images/image.jpg"/>
-      </figure>
-    </description>
-    <link href="https://raw.githubusercontent.com/yiran-frank-mao/feedable/master/images/image.jpg"/>
-    <enclosure type="image/jpg" url="https://raw.githubusercontent.com/yiran-frank-mao/feedable/master/images/image.jpg"/>
-    <enclosure type="image/jpeg" url="https://raw.githubusercontent.com/yiran-frank-mao/feedable/master/images/image.jpg"/>
-    <updated>2024-11-30T12:00:00Z</updated>
-    <summary>A stunning sunset over the ocean.</summary>
-  </item>
-</feed>
+<rss version="2.0">
+  <channel>
+    <title>My Feed</title>
+    <link href="https://example.com"/>
+    <updated>2024-12-02T06:47:38.146768Z</updated>
+    <author>
+      <name>Author</name>
+    </author>
+    <item>
+      <title>Beautiful Sunset</title>
+      <description>
+        <figure>
+          <img alt="image.jpg" referrerpolicy="no-referrer" src="https://raw.githubusercontent.com/yiran-frank-mao/feedable/master/images/image.jpg"/>
+        </figure>
+      </description>
+      <link href="https://raw.githubusercontent.com/yiran-frank-mao/feedable/master/images/image.jpg"/>
+      <enclosure type="image/jpg" url="https://raw.githubusercontent.com/yiran-frank-mao/feedable/master/images/image.jpg"/>
+      <enclosure type="image/jpeg" url="https://raw.githubusercontent.com/yiran-frank-mao/feedable/master/images/image.jpg"/>
+      <updated>2024-11-30T12:00:00Z</updated>
+      <summary>A stunning sunset over the ocean.</summary>
+    </item>
+  </channel>
+</rss>
