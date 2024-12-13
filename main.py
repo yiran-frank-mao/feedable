@@ -32,7 +32,7 @@ def main():
     feed = ET.Element("feed", xmlns="http://www.w3.org/2005/Atom")
     title = ET.SubElement(feed, "title")
     title.text = os.environ["INPUT_TITLE"]
-    link = ET.SubElement(feed, "link", href=os.environ["INPUT_BASEURL"])
+    ET.SubElement(feed, "link", href=os.environ["INPUT_BASEURL"])
     updated = ET.SubElement(feed, "updated")
     updated.text = datetime.utcnow().isoformat() + "Z"  # current time in ISO 8601 format
     author = ET.SubElement(feed, "author")
@@ -43,27 +43,25 @@ def main():
     for image_info in metadata_list:
         entry = ET.SubElement(feed, "entry")
         entry_title = ET.SubElement(entry, "title")
-        entry_title.text = "Beautiful Sunset"
+        entry_title.text = image_info['file_name']
 
         entry_content = ET.SubElement(entry, "content")
         figure = ET.Element("figure")
+        direct_link = os.path.join(os.environ["INPUT_DIRECTLINK"], os.environ["INPUT_FOLDERPATH"], image_info['file_name'])
         ET.SubElement(figure, "img", {
             "alt": image_info["file_name"],
-            "src": os.path.join(os.environ["INPUT_DIRECTLINK"], os.environ["INPUT_FOLDERPATH"], image_info['file_name']),
+            "src": direct_link,
             "referrerpolicy": "no-referrer"
         })
-        content_str = ET.tostring(figure, encoding='unicode') + " by Yiran"
-        entry_content.text = content_str
+        description_text = image_info['Image Make'] + " " + image_info['Image Model'] + " " + image_info['EXIF FocalLength'] + " " + image_info['EXIF ApertureValue'] + " " + image_info['EXIF ShutterSpeedValue'] + "\n Shot by Yiran"
+        entry_content.text = ET.tostring(figure, encoding='unicode') + description_text
 
-        entry_link = ET.SubElement(entry, "link", href=os.path.join(os.environ["INPUT_DIRECTLINK"], os.environ["INPUT_FOLDERPATH"], image_info['file_name']))
+        ET.SubElement(entry, "link", href=direct_link)
         entry_updated = ET.SubElement(entry, "updated")
         entry_updated.text = "2024-11-30T12:00:00Z"
         entry_summary = ET.SubElement(entry, "summary")
         entry_summary.text = "A stunning sunset over the ocean."
 
-    # Generate XML
-    # tree = ET.ElementTree(feed)
-    # tree.write(output_path, encoding="utf-8", xml_declaration=True)
     xml_str = ET.tostring(feed, encoding='utf-8')
     formatted_xml = minidom.parseString(xml_str).toprettyxml(indent="  ")
 
