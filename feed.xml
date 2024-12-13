@@ -2,20 +2,14 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>My Feed</title>
   <link href="https://example.com"/>
-  <updated>2024-12-06T02:02:49.885284Z</updated>
+  <updated>2024-12-06T02:49:46.947682Z</updated>
   <author>
     <name>Author</name>
   </author>
   <entry>
     <title>Beautiful Sunset</title>
-    <description>
-      <figure>
-        <img alt="image.jpg" referrerpolicy="no-referrer" src="https://raw.githubusercontent.com/yiran-frank-mao/feedable/master/images/image.jpg"/>
-      </figure>
-    </description>
+    <content>&lt;figure&gt;&lt;img alt=&quot;image.jpg&quot; referrerpolicy=&quot;no-referrer&quot; src=&quot;https://raw.githubusercontent.com/yiran-frank-mao/feedable/master/images/image.jpg&quot; /&gt;&lt;/figure&gt; by Yiran</content>
     <link href="https://raw.githubusercontent.com/yiran-frank-mao/feedable/master/images/image.jpg"/>
-    <enclosure type="image/jpg" url="https://raw.githubusercontent.com/yiran-frank-mao/feedable/master/images/image.jpg"/>
-    <enclosure type="image/jpeg" url="https://raw.githubusercontent.com/yiran-frank-mao/feedable/master/images/image.jpg"/>
     <updated>2024-11-30T12:00:00Z</updated>
     <summary>A stunning sunset over the ocean.</summary>
   </entry>
