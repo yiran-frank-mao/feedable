@@ -1,5 +1,6 @@
 import os
 import exifread
+import re
 from datetime import datetime
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
@@ -8,6 +9,9 @@ def get_image_metadata(file_path):
     img = open(file_path, 'rb')
     tags = exifread.process_file(img, details=False)
     return {key: tags[key] for key in ['Image Make', 'Image Model', 'EXIF LensModel', 'EXIF FocalLength', 'EXIF ApertureValue', 'EXIF ShutterSpeedValue'] if key in tags}
+
+def extract_name(fileName):
+    return re.sub(r'(?<!^)(?=[A-Z])', ' ', fileName)
 
 # Set the output value by writing to the outputs in the Environment File, mimicking the behavior defined here:
 #  https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-output-parameter
@@ -60,7 +64,7 @@ def main():
         entry_updated = ET.SubElement(entry, "updated")
         entry_updated.text = "2024-11-30T12:00:00Z"
         entry_summary = ET.SubElement(entry, "summary")
-        entry_summary.text = "A stunning sunset over the ocean."
+        entry_summary.text = extract_name(image_info['file_name'])
 
     xml_str = ET.tostring(feed, encoding='utf-8')
     formatted_xml = minidom.parseString(xml_str).toprettyxml(indent="  ")
