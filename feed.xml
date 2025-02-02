@@ -2,16 +2,16 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>My Feed</title>
   <link href="https://example.com"/>
-  <updated>2025-02-02T01:59:01.898170Z</updated>
+  <updated>2025-02-02T02:03:15.322613Z</updated>
   <author>
     <name>Author</name>
   </author>
   <entry>
-    <title>image.jpg</title>
-    <content>&lt;figure&gt;&lt;img alt=&quot;image.jpg&quot; referrerpolicy=&quot;no-referrer&quot; src=&quot;https://raw.githubusercontent.com/yiran-frank-mao/feedable/master/images/image.jpg&quot; /&gt;&lt;/figure&gt;SONY ILCE-7RM3A 16 331919/62500 1165241/125000
+    <title>NaroomaCoast.jpg</title>
+    <content>&lt;figure&gt;&lt;img alt=&quot;NaroomaCoast.jpg&quot; referrerpolicy=&quot;no-referrer&quot; src=&quot;https://raw.githubusercontent.com/yiran-frank-mao/feedable/master/images/NaroomaCoast.jpg&quot; /&gt;&lt;/figure&gt;ILCE-7RM3A 16 331919/62500 1165241/125000
  Shot by Yiran</content>
-    <link href="https://raw.githubusercontent.com/yiran-frank-mao/feedable/master/images/image.jpg"/>
+    <link href="https://raw.githubusercontent.com/yiran-frank-mao/feedable/master/images/NaroomaCoast.jpg"/>
     <updated>2024-11-30T12:00:00Z</updated>
-    <summary>image.jpg</summary>
+    <summary>Narooma Coast.jpg</summary>
   </entry>
 </feed>
