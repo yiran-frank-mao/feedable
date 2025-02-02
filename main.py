@@ -57,7 +57,7 @@ def main():
             "src": direct_link,
             "referrerpolicy": "no-referrer"
         })
-        description_text = str(image_info['Image Make']) + " " + str(image_info['Image Model']) + " " + str(image_info['EXIF FocalLength']) + " " + str(image_info['EXIF ApertureValue']) + " " + str(image_info['EXIF ShutterSpeedValue']) + "\n Shot by Yiran"
+        description_text = str(image_info['Image Model']) + " " + str(image_info['EXIF FocalLength']) + " " + str(image_info['EXIF ApertureValue']) + " " + str(image_info['EXIF ShutterSpeedValue']) + "\n Shot by Yiran"
         entry_content.text = ET.tostring(figure, encoding='unicode') + description_text
 
         ET.SubElement(entry, "link", href=direct_link)
