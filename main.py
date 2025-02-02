@@ -11,7 +11,11 @@ def get_image_metadata(file_path):
     return {key: tags[key] for key in ['Image Make', 'Image Model', 'EXIF LensModel', 'EXIF FocalLength', 'EXIF ApertureValue', 'EXIF ShutterSpeedValue'] if key in tags}
 
 def extract_name(fileName):
-    return re.sub(r'(?<!^)(?=[A-Z])', ' ', fileName)
+    # Remove the extension if present
+    base_name, _ = os.path.splitext(fileName)
+    # Insert a space before each uppercase letter that is not at the beginning.
+    title_str = re.sub(r'(?<!^)(?=[A-Z])', ' ', base_name)
+    return title_str
 
 # Set the output value by writing to the outputs in the Environment File, mimicking the behavior defined here:
 #  https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-output-parameter
@@ -47,17 +51,17 @@ def main():
     for image_info in metadata_list:
         entry = ET.SubElement(feed, "entry")
         entry_title = ET.SubElement(entry, "title")
-        entry_title.text = image_info['file_name']
+        entry_title.text = image_info.get("file_name", " ")
 
         entry_content = ET.SubElement(entry, "content")
         figure = ET.Element("figure")
         direct_link = os.path.join(os.environ["INPUT_DIRECTLINK"], os.environ["INPUT_FOLDERPATH"], image_info['file_name'])
         ET.SubElement(figure, "img", {
-            "alt": image_info["file_name"],
+            "alt": image_info.get("file_name", " "),
             "src": direct_link,
             "referrerpolicy": "no-referrer"
         })
-        description_text = str(image_info['Image Model']) + " " + str(image_info['EXIF FocalLength']) + " " + str(image_info['EXIF ApertureValue']) + " " + str(image_info['EXIF ShutterSpeedValue']) + "\n Shot by Yiran"
+        description_text = str(image_info.get('Image Make', '')) + " " + str(image_info.get('Image Model', '')) + " " + str(image_info.get('EXIF FocalLength', '')) + " " + str(image_info.get('EXIF ApertureValue', '')) + " " + str(image_info.get('EXIF ShutterSpeedValue', '')) + "\n Shot by Yiran"
         entry_content.text = ET.tostring(figure, encoding='unicode') + description_text
 
         ET.SubElement(entry, "link", href=direct_link)
