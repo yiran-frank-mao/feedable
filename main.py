@@ -8,7 +8,7 @@ from xml.dom import minidom
 def get_image_metadata(file_path):
     img = open(file_path, 'rb')
     tags = exifread.process_file(img, details=False)
-    return {key: tags[key] for key in ['Image Make', 'Image Model', 'EXIF LensModel', 'EXIF FocalLength', 'EXIF ApertureValue', 'EXIF ShutterSpeedValue'] if key in tags}
+    return {key: tags[key] for key in ['EXIF DateTimeOriginal', 'Image Make', 'Image Model', 'EXIF LensModel', 'EXIF FocalLength', 'EXIF ApertureValue', 'EXIF ShutterSpeedValue'] if key in tags}
 
 def extract_name(fileName):
     # Remove the extension if present
@@ -49,9 +49,10 @@ def main():
 
     # Add an entry for each image
     for image_info in metadata_list:
+        title = extract_name(image_info['file_name'])
         entry = ET.SubElement(feed, "entry")
         entry_title = ET.SubElement(entry, "title")
-        entry_title.text = image_info.get("file_name", " ")
+        entry_title.text = title
 
         entry_content = ET.SubElement(entry, "content")
         figure = ET.Element("figure")
@@ -66,9 +67,10 @@ def main():
 
         ET.SubElement(entry, "link", href=direct_link)
         entry_updated = ET.SubElement(entry, "updated")
-        entry_updated.text = "2024-11-30T12:00:00Z"
+        dt = datetime.strptime(image_info.get('EXIF DateTimeOriginal', "2023:11:30 12:00:00"), "%Y:%m:%d %H:%M:%S")
+        entry_updated.text = dt.strftime("%Y-%m-%dT%H:%M:%SZ")
         entry_summary = ET.SubElement(entry, "summary")
-        entry_summary.text = extract_name(image_info['file_name'])
+        entry_summary.text = title
 
     xml_str = ET.tostring(feed, encoding='utf-8')
     formatted_xml = minidom.parseString(xml_str).toprettyxml(indent="  ")
