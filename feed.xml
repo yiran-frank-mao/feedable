@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>My Feed</title>
   <link href="https://example.com"/>
-  <updated>2024-12-13T07:10:53.928525Z</updated>
+  <updated>2025-02-02T01:59:01.898170Z</updated>
   <author>
     <name>Author</name>
   </author>
@@ -12,6 +12,6 @@
  Shot by Yiran</content>
     <link href="https://raw.githubusercontent.com/yiran-frank-mao/feedable/master/images/image.jpg"/>
     <updated>2024-11-30T12:00:00Z</updated>
-    <summary>A stunning sunset over the ocean.</summary>
+    <summary>image.jpg</summary>
   </entry>
 </feed>
