@@ -67,7 +67,7 @@ def main():
 
         ET.SubElement(entry, "link", href=direct_link)
         entry_updated = ET.SubElement(entry, "updated")
-        dt = datetime.strptime(image_info.get('EXIF DateTimeOriginal', "2023:11:30 12:00:00"), "%Y:%m:%d %H:%M:%S")
+        dt = datetime.strptime(str(image_info.get('EXIF DateTimeOriginal', "2023:11:30 12:00:00")), "%Y:%m:%d %H:%M:%S")
         entry_updated.text = dt.strftime("%Y-%m-%dT%H:%M:%SZ")
         entry_summary = ET.SubElement(entry, "summary")
         entry_summary.text = title
